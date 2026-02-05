@@ -1,7 +1,11 @@
-from AES import secret
 from constants import Sbox
 from constants import Rcon
-#11223344556677889900aabbccddeeff
+
+# 11223344556677889900aabbccddeeff
+
+key = input("Insert hex key 16bytes\n")
+secret = bytes.fromhex(key)
+
 
 def rotWord(word):
     rot_word = word[1:] + word[:1]
@@ -28,25 +32,40 @@ def xor_words(a, b):
     return bytes(x ^ y for x, y in zip(a, b))
 
 
-length = "128bit"
+if len(secret) == 16:
+    Nk = 4
+    Nr = 10
+    length = "128bit"
+elif len(secret) == 24:
+    Nk = 6
+    Nr = 12
+    length = "192bit"
+elif len(secret) == 32:
+    Nk = 8
+    Nr = 14
+    length = "256bit"
+else:
+    raise ValueError("Key must be 16, 24, or 32 bytes")
+
 Nb = 4  # const
-Nr = 10
-Nk = 4  # because 128 bit = 16 bytes = 4 words
 Nkeys = Nb * (Nr + 1)
 roundkeys = []
 key = []
 count = 0
 words = [secret[i:i + 4] for i in range(0, len(secret), 4)]
-for i in range(4, Nkeys):
+
+for i in range(Nk, Nkeys):
     words.append(bytes(4))
-for i in range(4, Nkeys):
-    if i % Nk != 0:
-        words[i] = xor_words(words[i - Nk], words[i - 1])
-    else:
-        words[i] = xor_words(words[i - Nk], g(words[i - 1], i//4))
+
+for i in range(Nk, Nkeys):
+    temp = words[i - 1]
+    if i % Nk == 0:
+        temp = g(temp, i // Nk)
+    elif Nk == 8 and i % Nk == 4:
+        temp = bytes(subWord(temp))
+    words[i] = xor_words(words[i - Nk], temp)
 
 for i in range(0, len(words), 4):
-    roundkeys.append(b''.join(words[i:i+4]))
-
+    roundkeys.append(b''.join(words[i:i + 4]))
 
 print(roundkeys)
