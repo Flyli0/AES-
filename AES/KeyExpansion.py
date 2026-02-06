@@ -67,5 +67,3 @@ for i in range(Nk, Nkeys):
 
 for i in range(0, len(words), 4):
     roundkeys.append(b''.join(words[i:i + 4]))
-
-print(roundkeys)
