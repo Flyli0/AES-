@@ -47,6 +47,7 @@ InvSbox = [
         0x17, 0x2b, 0x04, 0x7e, 0xba, 0x77, 0xd6, 0x26, 0xe1, 0x69, 0x14, 0x63, 0x55, 0x21, 0x0c, 0x7d
 ]
 
+block_size = 16
 
 def roundnum(secret):
         if len(secret) == 16:
@@ -58,3 +59,4 @@ def roundnum(secret):
         else:
                 raise ValueError("Key must be 16, 24, or 32 bytes")
         return Nr
+
