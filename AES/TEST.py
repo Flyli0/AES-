@@ -2,7 +2,7 @@ from AESencoding import cipher
 from AESdecoding import decryption
 
 block_hex = input("Insert 16 bytes \n")
-block = bytes.fromhex(block_hex)
+block = block_hex.encode("utf-8")
 
 
 print("Plaintext:", block.hex())
@@ -12,5 +12,5 @@ print("Ciphertext:", state.hex())
 
 
 plain = decryption(state)
-print("Decrypted:", plain.hex())
-#abcabcabcabcaaaaaaaaaaaaaaaaabbb
+plain = plain.decode("utf-8")
+print("Decrypted:", plain)

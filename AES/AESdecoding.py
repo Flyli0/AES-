@@ -1,11 +1,15 @@
 from ShiftRow import inv_shift_rows
 from SubBytes import inv_sub_bytes
 from MixColumn import inv_mix_column
-from KeyExpansion import Nr
-from KeyExpansion import roundkeys
+from constants import roundnum
+from KeyExpansion import Expand
 
 
 def decryption(state):
+    key = input("Insert hex key 16bytes\n")
+    secret = bytes.fromhex(key)
+    Nr = roundnum(secret)
+    roundkeys = Expand(secret)
     state = bytearray(p ^ k for p, k in zip(state, roundkeys[Nr]))
 
     for i in range(Nr-1, 0, -1):

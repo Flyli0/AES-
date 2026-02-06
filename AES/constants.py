@@ -48,3 +48,13 @@ InvSbox = [
 ]
 
 
+def roundnum(secret):
+        if len(secret) == 16:
+                Nr = 10
+        elif len(secret) == 24:
+                Nr = 12
+        elif len(secret) == 32:
+                Nr = 14
+        else:
+                raise ValueError("Key must be 16, 24, or 32 bytes")
+        return Nr
