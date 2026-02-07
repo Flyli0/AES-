@@ -49,6 +49,12 @@ InvSbox = [
 
 block_size = 16
 
+m = 2**64
+
+a = 6364136223846793005
+
+c = 1442695040888963407
+
 def roundnum(secret):
         if len(secret) == 16:
                 Nr = 10
