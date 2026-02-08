@@ -2,6 +2,8 @@ from AES.AESencoding import cipher
 from AES.constants import block_size
 from Modes.Xor import xor
 
+# Function for CTR decryption, takes key and ciphertext of bytes type, returns 
+# plaintext of bytes type
 def ctr_decrypt(key,ciphertext):
     nonce = ciphertext[:12]
     plaintext = b""

@@ -4,6 +4,8 @@ from AES.constants import block_size
 from Rand.RandomBytes import random_bytes
 from Modes.Xor import xor
 
+# Function for CBC decryption, takes key and ciphertext of bytes type, returns 
+# plaintext of bytes type
 def cbc_decrypt(key,ciphertext):
     iv = ciphertext[:block_size]
     plaintext = b""

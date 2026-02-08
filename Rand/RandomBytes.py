@@ -4,7 +4,10 @@ from AES.constants import m
 from AES.constants import a
 from AES.constants import c
 
+# Function that takes byte count to generate and returns pseudo-randomly generated 
+# sequence in bytes type
 def random_bytes(byte_count):
+    # time in nanoseconds since the epoch and process ID are XORed
     pseudo_random_value = time_ns() ^ getpid()
     result = b""
     while len(result) < byte_count:

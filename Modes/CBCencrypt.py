@@ -4,6 +4,8 @@ from AES.constants import block_size
 from Rand.RandomBytes import random_bytes
 from Modes.Xor import xor
 
+# Function for CBC encryption, takes key and plaintext of bytes type, returns 
+# ciphertext of bytes type
 def cbc_encrypt(key,plaintext):
     plaintext = padding_func(plaintext, block_size)
     print(plaintext)

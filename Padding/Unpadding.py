@@ -1,3 +1,5 @@
+# Function that takes padded plaintext in bytes type and block size in bytes and 
+# returns unpadded plaintext
 def unpadding_func(padded_plaintext, block_size):
     if len(padded_plaintext) == 0 or len(padded_plaintext) % block_size != 0:
         raise ValueError("Invalid padded plaintext length")
