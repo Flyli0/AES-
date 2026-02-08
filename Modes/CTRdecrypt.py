@@ -1,6 +1,6 @@
 from AES.AESencoding import cipher
 from AES.constants import block_size
-from Xor import xor
+from Modes.Xor import xor
 
 def ctr_decrypt(key,ciphertext):
     nonce = ciphertext[:12]

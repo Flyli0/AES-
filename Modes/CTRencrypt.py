@@ -1,7 +1,7 @@
 from AES.AESencoding import cipher
 from AES.constants import block_size
 from Rand.RandomBytes import random_bytes
-from Xor import xor
+from Modes.Xor import xor
 
 def ctr_encrypt(key,plaintext):
     nonce = random_bytes(12)  
