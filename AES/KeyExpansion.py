@@ -1,5 +1,5 @@
-from constants import Sbox
-from constants import Rcon
+from AES.constants import Sbox
+from AES.constants import Rcon
 
 # 11223344556677889900aabbccddeeff
 

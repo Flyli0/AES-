@@ -1,18 +1,15 @@
-from KeyExpansion import Expand
-from constants import roundnum
-from SubBytes import subBytes
-from ShiftRow import shiftRows
-from MixColumn import mixColumns
+from AES.KeyExpansion import Expand
+from AES.constants import roundnum
+from AES.SubBytes import subBytes
+from AES.ShiftRow import shiftRows
+from AES.MixColumn import mixColumns
 
 
-
-
-def cipher(block):
-    key = input("Insert hex key\n")
-    secret = bytes.fromhex(key)
+def cipher(key,block):
+    #block = block.encode("utf-8")
+    secret = key
     Nr = roundnum(secret)
     roundkeys = Expand(secret)
-    print(roundkeys)
     state = bytearray(p ^ k for p, k in zip(block, roundkeys[0]))
     for i in range(1, Nr):
         subBytes(state)

@@ -1,13 +1,12 @@
-from ShiftRow import inv_shift_rows
-from SubBytes import inv_sub_bytes
-from MixColumn import inv_mix_column
-from constants import roundnum
-from KeyExpansion import Expand
+from AES.ShiftRow import inv_shift_rows
+from AES.SubBytes import inv_sub_bytes
+from AES.MixColumn import inv_mix_column
+from AES.constants import roundnum
+from AES.KeyExpansion import Expand
 
+def decryption(key,state):
 
-def decryption(state):
-    key = input("Insert hex key 16bytes\n")
-    secret = bytes.fromhex(key)
+    secret = key
     Nr = roundnum(secret)
     roundkeys = Expand(secret)
     state = bytearray(p ^ k for p, k in zip(state, roundkeys[Nr]))
