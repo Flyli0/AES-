@@ -1,5 +1,6 @@
 from AES.AESencoding import cipher
 from Padding.Padding import padding_func
+from AES.constants import block_size
 
 def ecb_encrypt(plaintext):
     plaintext = padding_func(plaintext, block_size)
