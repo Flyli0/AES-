@@ -5,9 +5,9 @@ def xtime(a): #Правило сдвига по GF
         return (a << 1) & 0xFF
 
 
-def mixColumns(state):
+def mixColumns(state): #multiplying by polinomial hardcoded
     for c in range(4):
-        i = c * 4
+        i = c * 4 #because state is 1d array we mult i by 4 to access columns(state is filled by columns)
         s0 = state[i]
         s1 = state[i + 1]
         s2 = state[i + 2]
@@ -22,7 +22,7 @@ def inv_mix_column(state):
     def xtime(a):
         return ((a << 1) ^ 0x1B) & 0xFF if (a & 0x80) else (a << 1) & 0xFF
 
-    def mul2(a):
+    def mul2(a):#multiplying different powers of 2
         return xtime(a)
 
     def mul3(a):
@@ -40,7 +40,7 @@ def inv_mix_column(state):
     def mul14(a):
         return xtime(xtime(xtime(a) ^ a) ^ a)
 
-    for c in range(4):
+    for c in range(4):#inverse of previous process
         i = c * 4
         s0 = state[i]
         s1 = state[i + 1]
