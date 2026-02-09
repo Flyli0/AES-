@@ -10,7 +10,7 @@ from Modes.CTRdecrypt import ctr_decrypt
 
 root = tk.Tk()
 root.title("AES GUI")
-mode_var = tk.StringVar(value="ECB")  # выбранный режим
+mode_var = tk.StringVar(value="ECB")  # chosen mode
 
 
 def set_key():
@@ -80,7 +80,7 @@ def decrypt_text():
     output_text.insert(tk.END, plaintext)
 
 
-# файламы
+# files
 def encrypt_file():
     file_path = filedialog.askopenfilename(title="Select file to encrypt")
     if not file_path:
@@ -120,7 +120,7 @@ def decrypt_file():
 
 
 
-# Ключеки
+# Keys
 tk.Label(root, text="Key (hex)").grid(row=0, column=0, sticky="w")
 key_entry = tk.Entry(root, width=50)
 key_entry.grid(row=0, column=1)
@@ -130,25 +130,25 @@ key_size_var = tk.StringVar(value="128")
 tk.OptionMenu(root, key_size_var, "128", "192", "256").grid(row=0, column=3)
 tk.Button(root, text="Generate Key", command=set_key).grid(row=0, column=4)
 
-# Моды
+# Modes
 tk.Label(root, text="Mode").grid(row=1, column=0, sticky="w")
 tk.OptionMenu(root, mode_var, "ECB", "CBC", "CTR").grid(row=1, column=1, sticky="w")
 
-# Ввод
+# Input
 tk.Label(root, text="Input").grid(row=2, column=0, sticky="nw")
 input_text = scrolledtext.ScrolledText(root, width=60, height=10)
 input_text.grid(row=2, column=1, columnspan=4)
 
-# Вывод
+# Output
 tk.Label(root, text="Output").grid(row=3, column=0, sticky="nw")
 output_text = scrolledtext.ScrolledText(root, width=60, height=10)
 output_text.grid(row=3, column=1, columnspan=4)
 
-# Кнопки
+# Buttons
 tk.Button(root, text="Encrypt Text", command=encrypt_text).grid(row=4, column=1)
 tk.Button(root, text="Decrypt Text", command=decrypt_text).grid(row=4, column=2)
 tk.Button(root, text="Encrypt File", command=encrypt_file).grid(row=5, column=1)
 tk.Button(root, text="Decrypt File", command=decrypt_file).grid(row=5, column=2)
 
-# --- Запуск GUI ---
+# --- GUI launch ---
 root.mainloop()
