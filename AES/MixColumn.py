@@ -1,4 +1,4 @@
-def xtime(a): #Правило сдвига по GF
+def xtime(a): #GF offset rule
     if a & 0x80:
         return ((a << 1) ^ 0x1B) & 0xFF
     else:
