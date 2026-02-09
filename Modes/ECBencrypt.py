@@ -11,3 +11,7 @@ def ecb_encrypt(key,plaintext):
         block = plaintext[i:i+block_size]
         ciphertext += cipher(key, block)
     return ciphertext
+
+
+
+
