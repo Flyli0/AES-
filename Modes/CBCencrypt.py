@@ -8,7 +8,6 @@ from Modes.Xor import xor
 # ciphertext of bytes type
 def cbc_encrypt(key,plaintext):
     plaintext = padding_func(plaintext, block_size)
-    print(plaintext)
     iv = random_bytes(block_size)
     ciphertext = iv  
     previous_ciphertext_block = iv
